@@ -1,0 +1,82 @@
+<template name="board">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>글번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>수정</th>
+                <th>삭제</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each list}}
+            <tr>
+                <td>{{글번호}}</td>
+                <!-- 해당게시글 클릭시 해당 id로 넘어감, 파라미터로 넘겨받음 -->
+                <td><a href="{{pathFor 'detail' _id=_id}}">{{제목}}</a></td>
+                <td>{{작성자}}</td>
+                <td><a href="#" name="updateBoard">수정</a></td>
+                <td><a href="#" name="deleteBoard" id="{{_id}}">삭제</a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-md pull-right" data-toggle="modal" data-target="#writeModal">
+        글쓰기
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="writeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">글쓰기</h4>
+                </div>
+                <div class="modal-body">
+                    글번호: 
+                    <input type="text" name="number"><br>
+                    제목: 
+                    <input type="text" name="title"><br>
+                    작성자: 
+                    <input type="text" name="writer"><br>
+                    내용: 
+                    <input type="text" name="content"><br>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button name="submit" type="button" class="btn btn-primary">작성</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+                </div>
+                <div class="modal-body">
+                    글번: 
+                    <input type="text" name="number"><br>
+                    제목: 
+                    <input type="text" name="title"><br>
+                    작성자: 
+                    <input type="text" name="writer"><br>
+                    내용: 
+                    <input type="text" name="content"><br>
+                    <input type="text" name="hidden_id" class="hidden">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button name="submit" type="button" class="btn btn-primary">수정</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,13 @@
+<template name="detail">
+    {{#with data}}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            제목: {{제목}} / 작성자: {{작성자}} / 글번호: {{글번호}}
+        </div>
+        <div class="panel-body">
+            {{내용}}
+        </div>
+    </div>
+    {{/with}}
+    <button class="btn btn-default pull-right"><a href="/board">이전으로</a></button>
+</template>

@@ -1,0 +1,1 @@
+CollectionBoard = new Mongo.Collection('board1'); //mongo db에 board1 (게시글 저장할) 테이블 생성
